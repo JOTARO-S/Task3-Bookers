@@ -1,0 +1,30 @@
+    <main class="mb-auto">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <h5>User info</h5>
+            <ul class="users">
+              <% @users.each do |user| %>
+              <li>img</li>
+              <hr>
+              <li>name</li>
+              <%= user.name %>
+              <hr>
+              <li>introduction</li>
+              <%= user.introduction %>
+              <p><%= link_to "edit", edit_user_path(@userId) %></p>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <h5>New book</h5>
+            <p>Title</p>
+            <p>Opinion</p>
+            <p>Create Book</p>
+          </div>
+        </div>
+      </div>

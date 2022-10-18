@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title>Bookers2</title>
+  
+</head>
+
+<main>
+  <p id="notice"><%= flash[:notice] %></p>
+  <div class="container">
+    <div class="row">
+      <div class="mx-auto col-10">
+        <h1>welcome to <i class="fa-solid fa-book"></i><strong>Bookers</strong> !!</h1>
+        <p>In <i class="fa-solid fa-book"></i><strong>Bookers</strong>,</p>
+        <p>you can share and exchange you opinions, inpressions, and emotions</p>
+        <p>about various books!</p>
+      <div class="mx-auto col-10">
+        <div class="row">
+          <%= link_to "Log in", new_user_session_path, class: 'nav-link text-light btn btn-sm btn-block btn-info m-2' %>
+        </div>
+        <div class="row">
+          <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-light btn btn-sm btn-block btn-success m-2' %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</main>
+</html>

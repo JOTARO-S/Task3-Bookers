@@ -21,7 +21,7 @@
           <div class="col-md-4">
             <h2>User info</h2>
             <% @users.each do |user| %>
-            <p><%= image_tag user.get_profile_image(100,100) %></p>
+            <p>image_tag</p>
             <hr>
             <p>name</p>
             <%= user.name %>
@@ -58,6 +58,7 @@
       
       <div>
         <h2>Books</h2>
+          <hr>
         <table>
         <thead>
           <tr>
@@ -65,11 +66,12 @@
             <th>Title</th>
             <th>Opinion</th>
           </tr>
+            <hr>
         </thead>
             <% @books.each do |book| %>
         <tbody>
             <tr>
-              <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+              <td>image_tag</td>
               <td><%= link_to book_path(book.id) do %>
                   <%= book.title %>
                   <% end %>

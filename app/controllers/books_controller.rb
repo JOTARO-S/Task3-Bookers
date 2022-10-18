@@ -43,19 +43,19 @@ class BooksController < ApplicationController
   private
   
   def book_params
-    params.require(:book).permit(:title, :body, :book_image)
+    params.require(:book).permit(:title, :body)
   end
   
   def user_params
   params.require(:user).permit(:introduction, :name, :profile_image)
   end
   
-  #def is_matching_login_user
-    #user_id = params[:id].to_i
-    #login_user_id = current_user.id
-    #if(user_id != login_user_id)
-      #redirect_to post_images_path
-    #end
-  #end
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    login_user_id = current_user.id
+    if(user_id != login_user_id)
+      redirect_to books_path
+    end
+  end
   
 end

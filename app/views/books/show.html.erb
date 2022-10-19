@@ -13,21 +13,19 @@
               <div class="row no-gutters">
                 <div class="mx-auto col-md-10 col-10">
                   <h2 class="pt-3 pb-2">User info</h2>
-                  <% @users.each do |user| %>
-                  <div><%= image_tag user.get_profile_image(100,100) %></div> 
+                  <div><%= image_tag current_user.get_profile_image(100,100) %></div> 
                   <table class="table">
                     <tbody>
                       <tr class="">
                         <th class="font-weight-bold mr-3">name</th>
-                        <th class="font-weight-bold"><%= user.name %></th>
+                        <th class="font-weight-bold"><%= current_user.name %></th>
                       </tr>
                       <tr class="">
                         <th class="font-weight-bold mr-3">introduction</th>
-                        <th class="font-weight-bold"><%= user.introduction %></th>
+                        <th class="font-weight-bold"><%= current_user.introduction %></th>
                       </tr>
                     </tbody>
                   </table>
-                <% end %>
 
                   <%= link_to edit_user_path(@userId) , class: 'btn btn-default btn-outline-secondary col-12 col-sm-12 col-md-12 col-lg-12 mt-4 mb-2' do %>
                   <i class="fa-solid fa-user-gear"></i>

@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :title, presence: true
-  validates :body, presence: true
+  #validates :title, presence: true
+  #validates :body, presence: true
   
   has_one_attached :profile_image, dependent: :destroy
   

@@ -4,13 +4,13 @@ class BooksController < ApplicationController
     @books = Book.all
     @book = Book.new
     @userId = current_user.id
-    @users = User.all
     
   end
   
   def create
-    book = Book.new(book_params)
-    book.user_id = current_user.id
+    book = Book.new(
+      book_params,
+    user_id: @current_user.id)
     if book.save
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(book.id)
@@ -21,6 +21,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @books = User.find_by(id: @book.user_id)
     @book = Book.find(params[:id])
   end
 
@@ -39,15 +40,15 @@ class BooksController < ApplicationController
     @book.update(book_params)
     redirect_to books_path
   end
-  
-  private
-  
+
+  protected
+
   def book_params
     params.require(:book).permit(:title, :body)
   end
   
   def user_params
-  params.require(:user).permit(:body, :name, :profile_image)
+    params.require(:user).permit(:introduction, :name, :profile_image)
   end
   
   def is_matching_login_user

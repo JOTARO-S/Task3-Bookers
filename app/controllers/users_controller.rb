@@ -22,7 +22,10 @@ class UsersController < ApplicationController
 
   def show
     @userId = current_user.id
+    @users = User.all
     @user = User.find(params[:id])
+    @books = Book.all
+    @book = Book.new
     
   end
 
@@ -36,14 +39,14 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id)  
   end
   
-  private
-  
+  protected
+
   def book_params
     params.require(:book).permit(:title, :body)
   end
   
   def user_params
-  params.require(:user).permit(:body, :name, :profile_image)
+  params.require(:user).permit(:introduction, :name, :profile_image)
   end
   
   def is_matching_login_user
@@ -53,5 +56,6 @@ class UsersController < ApplicationController
       redirect_to books_path
     end
   end
+
   
 end

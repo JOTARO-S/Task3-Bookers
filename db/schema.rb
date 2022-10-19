@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2022_10_18_082532) do
   create_table "books", force: :cascade do |t|
     t.text "title"
     t.text "body"
-    t.string "book_image"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -53,6 +52,8 @@ ActiveRecord::Schema.define(version: 2022_10_18_082532) do
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "introduction", default: "", null: false
+    t.string "profile_image", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

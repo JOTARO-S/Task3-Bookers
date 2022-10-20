@@ -1,9 +1,4 @@
-<html>
-  <body>
-    <main class="mb-auto">
-      
-      <%= render 'error', book: @book %> 
-      
+
       <p id="notice"><%= flash[:notice] %></p>
       
       <div class="container">
@@ -13,7 +8,6 @@
               <div class="row no-gutters">
                 <div class="mx-auto col-md-10 col-10">
                   <h2 class="pt-3 pb-2">User info</h2>
-                  <% @users.each do |user| %>
                   <div><%= image_tag user.get_profile_image(100,100) %></div> 
                   <table class="table">
                     <tbody>
@@ -27,9 +21,8 @@
                       </tr>
                     </tbody>
                   </table>
-                <% end %>
 
-                  <%= link_to edit_user_path(@userId) , class: 'btn btn-default btn-outline-secondary col-12 col-sm-12 col-md-12 col-lg-12 mt-4 mb-2' do %>
+                  <%= link_to edit_user_path(current_user.id) , class: 'btn btn-default btn-outline-secondary col-12 col-sm-12 col-md-12 col-lg-12 mt-4 mb-2' do %>
                   <i class="fa-solid fa-user-gear"></i>
                   <% end %>
                 </div>
@@ -40,7 +33,7 @@
         <div class="row">
           <div class="mx-auto col-md-11">
             <h2 class="pt-3 pb-2">New book</h2>
-            <%= form_with model: @book do |f| %>
+            <%= form_with model: book do |f| %>
               <div class="field">
                   <label for="book_title" class="d-block">Title</label>
                   <div class="d-block"><%= f.text_field :title %></div>

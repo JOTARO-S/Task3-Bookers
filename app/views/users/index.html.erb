@@ -2,61 +2,8 @@
   <body>
     <main class="mb-auto">
       
-      <%= render 'books/error', book: @book %> 
-      
-      <p id="notice"><%= flash[:notice] %></p>
-      
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="mx-auto col-lg-4 col-md-4 col-sm-11 col-11">
-            <div class="container">
-              <div class="row no-gutters">
-                <div class="mx-auto col-md-10 col-10">
-                  <h2 class="pt-3 pb-2">User info</h2>
-                  <div><%= image_tag current_user.get_profile_image(100,100) %></div> 
-                  <table class="table">
-                    <tbody>
-                      <tr class="">
-                        <th class="font-weight-bold mr-3">name</th>
-                        <th class="font-weight-bold"><%= current_user.name %></th>
-                      </tr>
-                      <tr class="">
-                        <th class="font-weight-bold mr-3">introduction</th>
-                        <th class="font-weight-bold"><%= current_user.introduction %></th>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <%= link_to edit_user_path(@userId) , class: 'btn btn-default btn-outline-secondary col-12 col-sm-12 col-md-12 col-lg-12 mt-4 mb-2' do %>
-                  <i class="fa-solid fa-user-gear"></i>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-      
-      <div class="container">
-        <div class="row">
-          <div class="mx-auto col-md-11">
-            <h2 class="pt-3 pb-2">New book</h2>
-            <%= form_with model: @book do |f| %>
-              <div class="field">
-                  <label for="book_title" class="d-block">Title</label>
-                  <div class="d-block"><%= f.text_field :title %></div>
-              </div>
-      
-              <div class="field">
-                  <label for="book_body" class="d-block">Opinion</label>
-                  <div class="d-block"><%= f.text_area :body %></div>
-              </div>
-  
-              <div class="action">
-                <%= f.submit 'Create Book', class:"btn btn-block btn-success mt-4" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        </div>
-      </div>
+      <%= render 'books/error', book: @book %>
+      <%= render 'books/info', {book: @book, user: @user} %>  
       
       <div class="mx-auto col order-2 col-lg-7 col-md-7 col-sm-11 col-11">
         <h2 class="pt-3 pb-2">User</h2>

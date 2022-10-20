@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
   
   def index
     @books = Book.all
@@ -26,20 +27,10 @@ class BooksController < ApplicationController
   end  
     
   def edit
-  user_id = params[:id].to_i
-  login_user_id = current_user.id
-  if(user_id != login_user_id)
-    redirect_to book_path
-  end
-    @book = Book.find(params[:id])
+      @book = Book.find(params[:id])
   end
   
   def update
-  user_id = params[:id].to_i
-  login_user_id = current_user.id
-  if(user_id != login_user_id)
-    redirect_to book_path
-  end
     @book = Book.find(params[:id])
      if @book.update(book_params)
       flash[:notice] = "You have updated user successfully."
@@ -66,7 +57,7 @@ class BooksController < ApplicationController
   end
   
   def is_matching_login_user
-    user_id = params[:id].to_i
+    user_id = Book.find(params[:id]).user_id
     login_user_id = current_user.id
     if(user_id != login_user_id)
       redirect_to books_path

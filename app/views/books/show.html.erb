@@ -2,17 +2,18 @@
   <body>
     <main class="mb-auto">
       
+      <div class="container">
+      <div class="row no-gutters">
       <%= render 'books/info', {book: @book, user: @user} %> 
       
-      <div class="mx-auto col order-2 col-lg-7 col-md-7 col-sm-11 col-11">
-        <h2 class="pt-3 pb-2">Book detail</h2>
-        <table class="table table-success table-striped">
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table">
             
         <tbody>
             <tr>
-              <td>
+              <td><%= link_to user_path(@user) do %>
                 <%= image_tag @user.get_profile_image(100,100) %><br>
-                <%= link_to user_path(@user) do %>
                 <%= @books.user.name %>
                 <% end %>
               </td>
@@ -29,7 +30,7 @@
               <% end %>
               <% if @books.user == current_user %>
               <td>
-                <%= link_to "Destroy", book_path(@books), method: :delete , class: 'btn btn-danger' %>
+                <%= link_to "Destroy", book_path(@books), method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-danger' %>
               </td>
               <% end %>
             </tr>

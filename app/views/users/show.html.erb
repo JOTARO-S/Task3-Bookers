@@ -1,25 +1,26 @@
 <html>
   <body>
-    <main class="mb-auto">
-        
+    <main>
+      
       <%= render 'books/info', {book: @book, user: @user} %>
       
-      <div class="mx-auto col order-2 col-lg-7 col-md-7 col-sm-11 col-11">
-        <h2 class="pt-3 pb-2">Books</h2>
+      <div class="col-md-8 offset-md-1">
+        <h2>Books</h2>
         <table class="table">
         <thead>
           <tr>
-            <th colspan="1"></th>
             <th>Title</th>
             <th>Opinion</th>
+            <th colspan="3"></th>
           </tr>
         </thead>
             
             <% @books.each do |book| %>
         <tbody>
             <tr>
-              <td>
+              <td><%= link_to user_path(@user.id) do %>
                   <%= image_tag book.user.get_profile_image(100,100) %><br>
+                  <% end %>
               </td>
               <td>
                   <%= link_to book_path(book.id) do %>
